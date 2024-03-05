@@ -1,0 +1,452 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{listings}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsmath,amsthm}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{layout}
+\usepackage{tikz}
+\usepackage{bbm}
+\usepackage{tikz-cd}
+\usepackage{cite}
+\usetikzlibrary{positioning}
+\usepackage{latexsym,amsxtra,amscd,ifthen, amsmath,color,url}
+\newcommand{\comp}{\overline{\phantom{A}}}
+\setlength{\tabcolsep}{12pt}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{observation}[theorem]{Observation}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{definition}[theorem]{Definition}
+\newcommand\NN{\mathbb{N}} 
+\newcommand\RR{\mathbb{R}}
+\newcommand\CR{\mathcal{R}}
+\newcommand\ZZ{\mathbb{Z}}
+\newcommand\AL{\mathcal{A}}
+\newcommand\MM{\mathcal{M}}
+\newcommand\BB{\mathcal{B}}
+\newcommand\BBB{\mathfrak{B}}
+\newcommand\CC{\mathcal{C}}
+\newcommand\CCC{\mathfrak{C}}
+\newcommand\DD{\mathcal{D}}
+\newcommand\EE{\mathbb{E}}
+\newcommand\FF{\mathcal{F}}
+\newcommand\GG{\mathcal{G}}
+\newcommand\HH{\mathcal{H}}
+\newcommand\JJ{\mathcal{J}}
+\newcommand\PP{\mathcal{P}}
+\newcommand\QQ{\mathbb{Q}}
+\newcommand\CS{\mathcal{S}}
+\newcommand\TT{\mathcal{T}}
+\newcommand\BT{\mathbb{T}}
+\newcommand\OO{\mathcal{O}}
+\newcommand\UU{\mathcal{U}}
+\newcommand\VV{\mathcal{V}}
+\newcommand{\kk}{\Bbbk}
+\newcommand\PPT{\mathcal{P}^{*}}
+\newcommand\CST{\Sigma^{*}}
+\newcommand\RX{\mathsf{X}}
+\newcommand\1{_{(1)}}
+\newcommand\2{_{(2)}}
+
+%\voffset=-1truein		% LaTeX has too much space at page top
+%\addtolength{\textheight}{0.3truein}
+%\addtolength{\textheight}{\topmargin}
+%\addtolength{\topmargin}{-\topmargin}
+%\textwidth  6.0in		% LaTeX article default 360pt=4.98''
+%\oddsidemargin 0pt	% \oddsidemargin  .35in   % default is 21.0 pt
+%\evensidemargin 0pt	% \evensidemargin .35in   % default is 59.0 pt
+%\marginparwidth=0pt
+% decrease margins on sides and top/bottom
+\geometry{
+bottom=25mm,
+top=35mm,
+left=20mm,
+right=20mm
+}
+\voffset=-0.5truein
+\title{Hopf Algebras Acting on Quantum Planes}
+\date{}
+\author{Brandon Mather}
+\begin{document}%\layout
+	%\MakeScribeTop
+
+\maketitle
+
+\section{Hopf Algebra Definitions}
+\begin{definition}
+A Hopf Algebra, $\left(H,\bigtriangledown,\eta,\triangle,\varepsilon,S\right)$, is a bialgebra $H$ over a field $\kk$ with an antipode $S:H\to H$ where the bialgebra has product $\bigtriangledown:H\otimes H\to H$, unit $\eta:\kk\to H$, coproduct $\triangle:H\to H\otimes H$, counit $\varepsilon:H\to\kk$ such that the following diagrams commute
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBoBGAXVJADcBDAGwFcYkQBBAHS4jwFt4AAg4gAvqXSZc+QijLFqdJq3bdeA4er5ZBcEeMkgM2PASLlSimgxZtEnHjr0GJU07IsUlt1Q9FiSjBQAObwRKAAZgBOEPxIliA4EEhkynbsWFBOmvo8ONFY9GAhjMEQAO6EbiAxcQk0yUgATDSM9ABGMIwACtJmciBlkTggNir2IPmFxaXlVTm6wlmGUbHxiGlNiADM4xkO00UlZVCV1UZ1G61JKbv7flNcBcdzZ1XilGJAA
+\[
+\text{Associativity:}
+\begin{tikzcd}
+H\otimes H\otimes H \arrow[d, "id\otimes \bigtriangledown"] \arrow[r, "\bigtriangledown\otimes id"] & H\otimes H \arrow[d, "\bigtriangledown"] \\
+H\otimes H \arrow[r, "\bigtriangledown"]                                                         & H                                    
+\end{tikzcd}
+\text{   \;\;\;\;Unit:}
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZARgBoAGAXVJADcBDAGwFcYkQBBAHS4jwFt4AAg4gAvqXSZc+QinKli1Ok1bseAaw08+WQXBHjJIDNjwEiZAEzKGLNok5GpZ2USuLbqh5x0DhmhriyjBQAObwRKAAZgBOEPxIZCA4EEgKKvbqXDA49H56wlhQziBxCUgAzDSp6TR2ao7FBfo8ufQgNIz0AEYwjAAK0uZyILFYYQAWOKXliYjJtYgemY0gALydIN19g8NujuNTMxIx8fPVKWnL9d7sm6dl53VXSCsNPjw44-RgYYyhCAAd0IYkoYiAA
+\begin{tikzcd}
+                                                           & H\otimes H \arrow[dd, "\bigtriangledown"] &                                                           \\
+\kk\otimes H \arrow[ru, "\eta\otimes id"] \arrow[rd, "="'] &                                        & H\otimes \kk \arrow[lu, "id\otimes\eta"'] \arrow[ld, "="] \\
+                                                           & H                                      &                                                          
+\end{tikzcd}
+\]
+\[
+\text{Coassociativity:} % https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRAAkQBfU9TXfIRQBGclVqMWbdgB0ZEPAFt4AAk48+2PASJlh4+s1aIOchVmVw13XiAxbBRUfuqGpJ2fKWrP5y9a5xGCgAc3giUAAzACcIRSQyEBwIJFEJIzY5HGisOjAQhlYNEBi4hOpkpAAmV0ljECycvIKi21L4xBqklMQAZlqMk0bc-MKQajgACyxInATi9tSKnv709waZbJGWs28rLChuCi4gA
+\begin{tikzcd}
+H \arrow[r, "\triangle"] \arrow[d, "\triangle"] & H\otimes H \arrow[d, "\triangle\otimes id"] \\
+H\otimes H \arrow[r, "id\otimes\triangle"]               & H\otimes H\otimes H                        
+\end{tikzcd}
+\text{\;\;\;\; Counit:}
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBoBGAXVJADcBDAGwFcYkQAdDga264jwBbeAAIAEiAC+pdJlz5CKcqWLU6TVuwnTZ2PASIAmCmoYs2iEGP5D4XXlJkgMehUWWHTGi1ZtZhcOJSajBQAObwRKAAZgBOEIJIAMw0OBBIZOrm7FwMsTBo2IwEfgEiWFCOMfGJiMogaRk0ZpqWALwgNIz0AEYwjAAKcvqKILFYYQAWOFUgcQlI9Y2IxlmtIB06czXJqekrzd7sFaV2HHkFRQZdvf1DrgaW41MzW-O1S-spaz5cOOP0MBhRhsSSUSRAA
+\begin{tikzcd}
+             & H \arrow[ld, "="'] \arrow[rd, "="] \arrow[dd, "\triangle"]                         &             \\
+\kk\otimes H &                                                                                    & H\otimes\kk \\
+             & H\otimes H \arrow[lu, "\varepsilon\otimes id"] \arrow[ru, "id\otimes\varepsilon"'] &            
+\end{tikzcd}
+\]
+\[
+\text{Coproduct compatibility:}
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRAAkAdTiPAW3gACdiAC+pdJlz5CKAIzkqtRizYjxk7HgJEATIur1mrRB268sAuMLESQGLTKJk5So6tNce-IV4tXhcx9rdTsHaR0UfVdDFRMzb0tfIKSQlID1JRgoAHN4IlAAMwAnCD4kMhAcCCQAZljjNm4cYqw6MByGGHT4Ztb2ztYNEBKyuupqpAAWBo8QLCgeuGa6JiXBBdsi0vLESsnEBWVG0z62jq6oCAB3QmHR3aOD-WO5s4GurZGd6YmaxBe7ni7wu2RuYCWIMGV1uYgooiAA
+\begin{tikzcd}
+H\otimes H \arrow[d, "\triangle\otimes\triangle"] \arrow[r, "\bigtriangledown"] & H \arrow[r, "\triangle"] & H\otimes H                                                                  \\
+H\otimes H\otimes H\otimes H \arrow[rr, "id\otimes\tau\otimes id"]           &                          & H\otimes H\otimes H\otimes H \arrow[u, "\bigtriangledown\otimes\bigtriangledown"]
+\end{tikzcd}
+\]
+\[
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRAB12BrLkAX1LpMufIRQBGclVqMWbABL9BIDNjwEik8dPrNWiEPM4Q8AW3gACRX2kwoAc3hFQAMwBOEU0jIgcEJABM1LpyBpwwOHTGZvDhkUquHl6Ikr7+iEEyemycOG5YdGD2DKwCiZ7e1H5IqSH6HOwRdPwUfEA
+\text{Unit compatibility:}\begin{tikzcd}
+\kk \arrow[rd, "\eta\otimes\eta"] \arrow[r, "\eta"] & H \arrow[d, "\triangle"] \\
+                                                    & H\otimes H              
+\end{tikzcd}
+\text{\;\;\;Counit compatibility:}
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRAAkQBfU9TXfIRQBGclVqMWbADrSA1nO68QGbHgJEyw8fWatEHWRDwBbeAAJOXcTCgBzeEVAAzAE4QTSAEzUcEJGQSejLSOK5YdGB2DLYQAO6EPC7unog+IH5IokFSBrL0rjBo2AwERqbw+XSFxVilhNQMdABGMAwACvzqQiDhdgAWOErJHgG+-ojZurkgVTUlGtZcQA
+\begin{tikzcd}
+H \arrow[r, "\varepsilon"]                                                         & \kk \\
+H\otimes H \arrow[u, "\bigtriangledown"] \arrow[ru, "\varepsilon\otimes\varepsilon"'] &    
+\end{tikzcd}
+\]
+\[
+\text{Antipode:}
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBoBGAXVJADcBDAGwFcYkQAJEAX1PU1z5CKchWp0mrdgB1pAazk8+IDNjwEiAJjE0GLNok5L+aoUTKbxeqYY6yIeALbwABF14nBGlNsu7JBpz2Tq7uyqpewiSkxFYB7HbSDljOcG7GKgLqUdqx-voJwSmhPOIwUADm8ESgAGYAThCOSGQgOBBIAKz5NiCyOPVY9GAVjGweIA1NXTTtSABsPYFYUEWpLgDKGVPNiIttHYjaEgWG-YPDo+UQAO6EEzsts4cAzEsy0gNDI2MgNIz0ABGMEYAAUsmZDIMKgALHDbRq7N4HJAAFnehg2a1cKwR00Q6JRRwxfU+Fx+1zueN2rTmiFEJ16sgY9RgaGwjA0D0RSAZdOO1kCshgOHopW4QA
+\begin{tikzcd}
+H\otimes H \arrow[rr, "id\otimes S"]                                      &                       & H\otimes H \arrow[d, "\bigtriangledown"] \\
+H \arrow[u, "\triangle"] \arrow[d, "\triangle"'] \arrow[r, "\varepsilon"] & \kk \arrow[r, "\eta"] & H                                     \\
+H\otimes H \arrow[rr, "S\otimes id"]                                      &                       & H\otimes H \arrow[u, "\bigtriangledown"]
+\end{tikzcd}
+\]\\
+\end{definition}
+
+For the sake of brevity, we write in general that $\triangle(h)=\sum h\1\otimes h\2$, this is called Sweedler notation.\\
+
+\begin{example}
+    Let $G$ be any group and denote $\kk G=\left\{\sum_{i=0}^\infty a_i g_i\;\vert\; a_i\in\kk, g_i\in G, n\in\NN\right\}$
+    The $\kk G$ is a Hopf algebra called the group algebra of $G$.
+    It has the product
+    \[
+    \left(\sum_{i=-0}^n a_i g_i\right)\left(\sum_{j=0}^m b_j g_j\right)=\sum_{i=o}^n\sum_{j=0}^m a_i b_j (g_i g_j)
+    \]
+    where $a_i\cdot b_j$ is the product in $\kk$ and $g_i\cdot g_j$ is the product in the group.
+    The unit is $1_\kk 1_G$ where $1_\kk$ is the unit of $\kk$ and $1_G$ is the identity element of the group.
+    The coproduct is defined by $\triangle(g)=g\otimes g$ extended linearly to all of $\kk G$, and the counit is $\varepsilon(g)=1_\kk$, again extended linearly.
+    Finally, the antipode is $S(g)=g^{-1}$.
+\end{example}
+
+Note that group algebras are always cocommutative, in other words $\bigtriangledown(h)=\tau\circ\bigtriangledown(h)$ for all $h\in \kk G$, where $\tau(a\otimes b)=b\otimes a$, and are commutative if and only if $G$ is abelian.
+
+\begin{definition}
+    For a Hopf algebra H, $G(H)=\{g\in H\;\vert\; \triangle{g}=g\otimes g\}$ is called the set of grouplike elements of $H$.
+\end{definition}
+
+\begin{example}
+    Let $\mathfrak{g}$ be a Lie algebra and $U(\mathfrak{g})$ the corresponding Universal Enveloping algebra.
+    Then $U(\mathfrak{g})$ is naturally an algebra, but also has a Hopf algebra structure.
+    The coproduct is given by $\triangle{x}=x\otimes 1+1\otimes x$, $\varepsilon(x)=0$ and $S(x)=-x$.
+\end{example}
+
+\begin{definition}
+    For a Hopf algebra H, $P(H)=\{x\in H\;\vert\; \triangle{x}=x\otimes 1+1\otimes x\}$ is called the set of primitive elements of $H$.
+    Generally, one can define the skew-primitive elements as $P_{a,b}=\{x\in H\;\vert\; \triangle{x}=x\otimes a+b\otimes x\}$.
+\end{definition}
+
+\begin{example}
+    In his seminal book, \cite{Sw}, Sweedler defined a $4$-dimensional non-commutative, non-cocommutative Hopf algebra
+    \[
+    H_4=\langle g,x\;\vert\; g^2=1, x^2=0,gx=-xg\rangle
+    \]
+    with operations
+    \[
+    \triangle{g}=g\otimes g,\;\; \triangle{x}=x\otimes 1+g\otimes x,\;\;\varepsilon(g)=1,\;\;\varepsilon(x)=0,
+    \]
+    \[
+    S(g)=g^{-1}\;\;S(x)=-xg^{-1}.
+    \]
+\end{example}
+
+\begin{example}
+ In \cite{KP}, Kac and Paljutkin defined an $8$-dimensional non-commutative, non-cocommutative Hopf Algebra
+ \[
+   H_8=\langle x,y,z\;\vert\; x^2=y^2=1,xy=yx,xz=zy,yz=zx,z^2=\tfrac{1}{2}(1+x+y-xy)\rangle 
+ \]
+ with operations
+ \begin{align*}
+   \triangle(x)&=x\otimes x, & \triangle(y)&=y\otimes y, & \triangle(z)&=\tfrac{1}{2}(1\otimes 1\otimes +1\otimes x+y\otimes 1-y\otimes x)(z\otimes z)\\
+   \varepsilon(x)&=1, & \varepsilon(y)&=1, & \varepsilon(z)&=1\\
+   S(x)&=x, & S(y)&=y, & S(z)&=z
+ \end{align*}
+\end{example}
+
+\begin{example}
+
+\end{example}
+
+\begin{definition} A left action of a Hopf algebra on a vector space $V$ is a tuple $(\alpha, V)$ so that
+$\alpha:H\otimes V\to V$ is a map satisfying the diagrams
+\[
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRAAkAdTiPAW3gACLj35CAaiAC+pdJlz5CKMgEYqtRizYjeWAXEGSZc7HgJEV5dfWatEHbrv2HpskBlOKLpNdRtb7I3UYKABzeCJQADMAJwg+JDIQHAgkACY-TTsQbhwYrDowUIYQiAB3MEcxAywoV2i4hMQklKRLDVs2Wqq9IW5GNAALOnqQWPi26lbEAGZMzvt+hiGR4zHG9KnU2fmAnM4B4ekKKSA
+\begin{tikzcd}
+H\otimes H\otimes V \arrow[r, "\bigtriangledown\otimes id"] \arrow[d, "id\otimes \alpha"] & H\otimes V \arrow[d, "\alpha"] \\
+H\otimes V \arrow[r, "\alpha"]                                                         & V                             
+\end{tikzcd}
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRAB12BrLziPALbwABADUQAX1LpMufIRQBGclVqMWbABJ9BI8VJnY8BIssWr6zVohD7VMKAHN4RUADMAThAFIyIHBBIympWbJwwOHQ6WEJwwlhQktIgnt6+1AFIAEzUlho2ALwg1Ax0AEYwDAAKssYKIB5YjgAWOEnuXj6IwZmIOSH5HOyMaM10khQSQA
+\begin{tikzcd}
+\kk\otimes V \arrow[r, "\eta\otimes id"] \arrow[rd, "="'] & H\otimes V \arrow[d, "\alpha"] \\
+                                                          & V                             
+\end{tikzcd}
+\]
+In this case, $V$ is called a left Hopf-module.
+\end{definition}
+
+For the rest of this paper we suppress the action $\alpha$ and instead write $\alpha(h\otimes v)=\prescript{h}{}v$.
+
+\begin{definition}
+A right coaction, $\rho$, of $H$ on $V$ is a tuple $(\rho,V)$ with $\rho:V\to V\otimes H$ so that the following commute\[
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRADUQBfU9TXfIRRkAjFVqMWbdgB0ZEPAFt4AAgAS3XiAzY8BIiNJjq9Zq0Qc5CrMrjqrS1Rp59dgg+XGmpF2fMd2zuIwUADm8ESgAGYAThCKSGQgOBBIAMwmkuYgcjEAFqkuILHxidQpSIYSZmy5BSDUDHQARjAMAAr8ekIgMViheTia0XEJiFUViABMmTUWdRAONqpYUA0gTa0dXe4WfQNDRSVjGcmp07M+IKtLtipyOH10YKEMrFwUXEA
+\begin{tikzcd}
+V \arrow[r, "\rho"] \arrow[d, "\rho"']  & V\otimes H \arrow[d, "id\otimes \triangle"] \\
+V\otimes H \arrow[r, "\rho\otimes id"'] & V\otimes H\otimes H                        
+\end{tikzcd}
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRADUQBfU9TXfIRQBGclVqMWbdgB0ZEPAFt4AAgAS3XiAzY8BIqOHj6zVog5yFWZXDkBrO93EwoAc3hFQAMwBOERUhkIDgQSKISpmxyPgAWoTzefgGI4SFIAEzUJlLmWFCWSvBy9D4waNgM+gkgvv6B1GmImRE5IAC8INQMdABGMAwACvx6QiA+WK4xOE5cQA
+\begin{tikzcd}
+V \arrow[r, "\rho"] \arrow[rd, "="'] & V\otimes H \arrow[d, "id\otimes\varepsilon"] \\
+                                     & V\otimes\kk                                 
+\end{tikzcd}
+\]
+In this case, $V$ is called a right Hopf-comodule.\\
+\end{definition}
+\begin{definition}
+When an algebra $A$ is a left Hopf-module with action $\alpha$, we call it a left Hopf-module algebra if it also satisfies the diagrams
+\[
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRAAkAdTiPAW3gACAILdeWAXBEgAvqXSZc+QigCM5KrUYs2XHvyHDZ8kBmx4CRAEwbq9Zq0QgjcheeVEAzLa0O2o-QlDYzclSxQyVU17HSc9cUlBeIMpAITg11NFCxVkbyi7bUcOMRSRUqCpZMrpGU0YKABzeCJQADMAJwg+JDIQHAgkdV9YkG4cDqw6MEaGBogAd0JMzu6h6gGkGxHi7kY0AAs6EJBVnsRvfsHEbZjdzgmpmbmoRcJqBjoAIxgGAAVsh4nJNGgccCczr0NtcACyFPxOcaTaazGAVRJYKDooSYkAfb6-AHucIgEFgiFdc5wq5IACs8NGmOxcHGdCYzMEuJWlLp0KQlzubD2DEOdGZwtFeJAnx+-0BJLJ4LqMiAA
+\begin{tikzcd}
+H\otimes A\otimes A \arrow[r, "\bigtriangledown"] \arrow[d, "\triangle\otimes id\otimes id"'] & H\otimes A \arrow[r, "\alpha"] & A & A\otimes A \arrow[l, "\bigtriangledown"']                         \\
+H\otimes H\otimes A\otimes A \arrow[rrr, "id\otimes\tau\otimes id"]                        &                                &   & H\otimes A\otimes H\otimes A \arrow[u, "\alpha\otimes\alpha"']
+\end{tikzcd}
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRAAkQBfU9TXfIRQBGclVqMWbADrSA1nO68QGbHgJEATGOr1mrRCACCSvmsFEyw8XqmH2siHgC28AAQmu4mFADm8IlAAMwAnCGckMhAcCCRRCX0ZaXoQmDRsBg0eYLCIxHiYpG0EuxBZGBw6UxBQ8MjqQsQAZl1JAzLpCqrsmtykFujYxGLbdtlGNAALboouIA
+\begin{tikzcd}
+H \arrow[r, "\varepsilon"] \arrow[d, "\eta"] & \kk \arrow[r, "\eta"] & A \\
+H\otimes A \arrow[rru, "\alpha"]             &                       &  
+\end{tikzcd}
+\]
+\end{definition}
+
+Note that a Hopf algebra acts if and only if its dual coacts. (Write why here)
+
+\begin{definition}
+And when a coalgebra $A$ is a an Hopf-module with action $\alpha$, we call it an Hopf-module coalgebra if it also satisfies the diagrams
+\[
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRAAkAdTiPAW3gACAIIgAvqXSZc+QijIBGKrUYs2XHvyEbeWAXBHdd+keMkgM2PASILyy+s1aIQoiVKuyiAJnvVHai7CRloGbuaWMjYovkr+qs4cIXpCwZopBjqhpmLKMFAA5vBEoABmAE4QfEhkIDgQSL4qTmzcjGgAFnRmZZXViE31SADM8S0u3DjlWHRgBQys7iAVVTXUQ4h2zYEgk9Oz8zDJJlhQx0KnINQMdABGMAwACtLWciDTBR04Pct9SFsbAAsYx2p3OcEmdCY4MElyWK36wLqDUQo22iTaDE6dHBmOxVxAN3uTxeXhcHy+4goYiAA
+\begin{tikzcd}
+H\otimes A \arrow[r, "\alpha"] \arrow[d, "\triangle\otimes id\otimes id"'] & A \arrow[r, "\triangle"] & A\otimes A                                                     \\
+H\otimes H\otimes A\otimes A \arrow[rr, "id\otimes\tau\otimes id"]         &                          & H\otimes A\otimes H\otimes A \arrow[u, "\alpha\otimes\alpha"']
+\end{tikzcd}
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRAEEQBfU9TXfIRQBGclVqMWbADrSA1nO68QGbHgJEyw8fWatEIABKyIeALbwABJy7iYUAObwioAGYAnCGaRkQOCEiiEnoy0vTuMGjYDBo8bp7eiABM1P4+1LpSBrKMaAAWdErxXkgpfgGIQZn6ILLhkdEEJubwdXQRUVgxhNQMdABGMAwACvzqQiDuWA55ONwUXEA
+\begin{tikzcd}
+A \arrow[r, "\varepsilon"]                                                  & \kk \\
+H\otimes A \arrow[u, "\alpha"] \arrow[ru, "\varepsilon\otimes\varepsilon"'] &    
+\end{tikzcd}
+\]
+\end{definition}
+
+Similar diagrams give the conditions for Hopf-comodule algebras and Hopf-comodule coalgebras.\\
+
+
+\begin{definition}
+A useful and prevalent construction on Hopf algebras is given a Hopf algebra $H$ and a left Hopf-module algebra $A$, the smash product algebra $A\# H$ is the algebra where $A\#H=A\otimes H$ as a $\kk$-vector space and has product
+\[
+(a\otimes h)(b\otimes k)=\sum a\;\prescript{h\1}{}b\otimes h\2 k.
+\]
+\end{definition}
+
+\begin{definition}
+    A Hopf algebra is called pointed if all of its left (right) comodules are \\$1$-dimensional.
+\end{definition}
+
+\begin{definition}
+    If $I\subseteq H$ and for any $h\in H$, $hI\subseteq I$, then $I$ is called an ideal of $H$.
+    If $\triangle(I)\subseteq I\otimes H+H\otimes I$, then $I$ is called a coideal of $H$.
+    If $I$ is both an ideal and a coideal, it is called a biideal.
+    Finally, if $I$ is a biideal and $S(I)\subseteq I$, then $I$ is called a Hopf ideal of H.
+\end{definition}
+
+\begin{lemma}
+    If $I$ is a Hopf ideal of $H$, then the quotient $H/I$ is a Hopf algebra.
+\end{lemma}
+
+\begin{definition}
+    If $H$ acts on an algebra $A$ and there is a Hopf ideal $I$ so that $I\cdot A=0$, then we say the action of $H$ factors through the quotient $H/I$.
+    In particular, if $H/I$ is isomorphic to a group algebra, we say the action of $H$ factors through a group action.
+\end{definition}
+
+\section{Big Questions}
+Juan Cuadra, Pavel Etingof and Chelsea Walton have been classifying algebras with Hopf actions for which the action factors through a group action\cite{EW}.
+For example, they have shown that any action by a semi-simple, finite dimensional Hopf algebra on an integral domain always has this property.
+As well, they have shown that any action by a finite dimensional Hopf algebra on a Weyl algebra also has this property.
+This is a component of a larger search for algebras on which Hopf algebras act.\\\\
+Andruskiewitsch and Schneider have been classifying pointed Hopf algebras\cite{AS}.\\\\
+Kenneth Chan, Ellen Kirkman, Jim Kuzmanovich, Chelsea Walton, and James Zhang have a series of works on  Hopf algebras acting on AS-regular algebras \cite{CKWZ} \cite{CKWZ2}\cite{CKWZ3}\cite{KKZ}.
+They have posed the question of when are the coinvariant subrings from these actions Artin-Schelter Gorenstein?\\\\
+Miriam Cohen and Davida Fishman extended work by Fisher and Montogomery \cite{FM} and Cohen and Montogomery \cite{CM} to determine when $A\#H$ is semiprime for $A$ and algebra and $H$ a Hopf algebra.
+Specifically, if $H$ is semi-simple and finite-dimensional and $A$ is semiprime, they ask is $A\#H$ is semiprime?\cite{CF}\\\\
+Chelsea Walton and Sarah Witherspoon have been working towards PBW deformation conditions on $B\# H$ where $B$ is a Koszul algebra and $H$ a Hopf algebra.
+In \cite{WW} they are able to provide these conditions when the antipode of $H$ is bijective, $B$ is connected as an $H$-module algebra, and the action of $H$ preserves the grading on $B$.
+In the same paper they pose the question if $H=U_q(\mathfrak{sl}_2)$, are there nontrivial PBW deformations of $B\#H$?
+
+
+
+\section{Taft Algebras}
+A Taft algebra, as defined in \cite{CKWZ}, is a Hopf algebra $T_{n,m}=\left<g,x\;\vert\; g^n=1,x^n=0,gx=\zeta xg\right>$ where $\zeta$ is a primitive $n$-th root of unity. 
+$T_{n,m}$ has the maps
+\[
+\triangle(g)=g\otimes g,\;\;\;\; \triangle(x)=1\otimes x+x\otimes g
+\]\[
+\varepsilon(g) =1,\;\;\;\; \varepsilon(x)=0,\;\;\;\;
+S(g)=g^{-1}, \;\;\;\; S(x)=-xg^{-1}.
+\]
+
+A small example is the lowest dimension non-commutative, non-cocommutative Hopf algebra, the 4-dimensional Sweedler algebra.
+This is given by $H_4=\langle g,x\;\vert\; g^2=1, x^=0, xg=-gx\rangle$ with operations
+\[
+\triangle(g)=g\otimes g,\;\;\;\; \triangle(x)=1\otimes x+x\otimes g    
+\]
+\[
+\varepsilon(g)=1,\;\;\;\; \varepsilon(x)=0,\;\;\;\; S(g)=g, \;\;\;\; S(x)=-xg.    
+\]
+This algebra in particular acts on the AS-regular algebra $\kk_{-1}[u,v]=\kk[u,v]/(uv+vu)$ by
+\[
+g\cdot u=u,\;\;\;\; g\cdot v=-v,\;\;\;\; x\cdot u=0,\;\;\;\; x\cdot v=v.    
+\]
+
+Let $q$ be a primitive root of unity where $|q^2| =m>1$, let $\alpha\in \kk$ and $n\in \ZZ^+$ where $|q| \big\vert n$, then a generalized Taft algebra is a Hopf algebra 
+
+\[T_{q,\alpha,n}=\left<g,g^{-1}x\;\vert\; gg^{-1}=g^{-1}g=1, xg=q gx, g^n=1, x^m=\alpha(g^m-g^{-m})\right>
+\]
+with maps
+\[
+\triangle(g)=g\otimes g,\;\;\;\; \triangle(x)=x\otimes g^{-1}+g\otimes x,
+\]
+\[
+\varepsilon(g)=1,\;\;\;\;\varepsilon(x)=0,\;\;\;\; S(g)=g^{-1},\;\;\;\; S(x)=-q x.
+\]
+If $q^m\neq 1$, then $\alpha=0$, and if $q^m=1$, $\alpha\in\{0,1\}$.\\
+
+Another definition for a generalized Taft algebra given in \cite{AS} is to take a Yetter-Drinfeld module $V$ of $D_2$-type over the group algebra $k\ZZ/n\ZZ$. 
+Then if $\BB(V)$ is the Nichols algebra of $V$, the bosonization $(\BB(V)\#k\ZZ/n\ZZ)^\text{cop}$ is a generalized Taft algebra.\\
+
+Let $q$ be a primitive root of unity with $q^2\neq 1$, then we can define the quantum polynomial ring $\kk_q[u,v]=\kk[u,v]/\langle uv-qvu\rangle$.
+The subring $U=\kk u\oplus \kk v$ is then a left $T_{q,\alpha,n}$-module.
+If as a $T_{q,\alpha,n}$-module $U$ is not semi-simple, then in \cite{CKWZ} it is proved that $T_{q,\alpha,n}$ coacts on $\kk_q[u,v]$.
+This coaction is given by 
+\[
+\rho(u)=u\otimes g\;\;\;
+\rho(v)=v\otimes g^{-1}+u\otimes x.
+\]
+The coaction induces an action by the finite dual $\left(T_{q,\alpha,n}\right)^\circ$ on $\kk_q[u,v]$.
+
+\section{8-dimensional Hopf Algebra}
+In \cite{KP}, Kac and Paljutkin define an 8-dimensional, non-commutative, non-cocommutative, semi-simple Hopf algebra
+\[
+H_8=\langle x,y,z\;\vert\; x^2=y^2=1, xy=yx, zx=yz, zy=xz, z^2=\frac{1}{2}(1+x+y-xy)\rangle
+\]
+with operations
+\[
+\triangle(x)=x\otimes x,\;\; \triangle(y)=y\otimes y,\;\; \triangle(z)=\frac{1}{2}(1\otimes 1+1\otimes x+y\otimes 1-y\otimes x)(z\otimes z),
+\]
+\[
+\varepsilon(x)=\varepsilon(y)=\varepsilon(z)=1,\;\; S(x)=x^{-1},\;\; S(y)=y^{-1},\;\; S(z)=z.
+\]
+Then in \cite{KKJ}, three representations of $H_8$ acting on quantum polynomial rings are given.
+For the ring $\kk_q[x_1,x_2]$ where $q^2=-1$, the first representation is given by
+\[
+x\mapsto \begin{bmatrix}-1 & 0\\0 & 1\end{bmatrix} \;\; y\mapsto \begin{bmatrix} 1 & 0\\ 0 & -1\end{bmatrix} \;\; z\mapsto\begin{bmatrix} 0 & 1\\ 1 & 0\end{bmatrix}.
+\]
+For the ring $\kk_Q[x_1,x_2,x_3,x_4]$ where $Q=(q_{ij})$, $x_jx_i=q_{ij}x_ix_j$ and $q_{12}=q^{-1}_{34}$, $q_{13}=q^{-1}_{24}$, $q^2_{14}=1$, $q^2_{23}=-1$, we also have the representation 
+\[
+x\mapsto \begin{bmatrix} 1&0&0&0\\0&-1&0&0\\0&0&1&0\\0&0&0&1\end{bmatrix} \;\; y\mapsto \begin{bmatrix} 1&0&0&0\\0&1&0&0\\0&0&-1&0\\0&0&0&1\end{bmatrix}\;\; z\mapsto\begin{bmatrix}0&0&0&1\\0&0&1&0\\0&1&0&0\\1&0&0&0\end{bmatrix}.
+\]
+And finally, for the ring $\kk_{-1}[u,v]$, we get the representation
+\[
+x\mapsto \begin{bmatrix}0&1\\1&0\end{bmatrix}\;\; y\mapsto\begin{bmatrix}0&-1\\-1&0\end{bmatrix}\;\; z\mapsto\begin{bmatrix}1&0\\0&-1\end{bmatrix}.
+\]
+
+\section{Quantum Enveloping Algebras}
+
+
+
+\begin{thebibliography}{99}
+\bibitem{AS}Andruskiewitsch, N., and H. -J. Schneider. “Pointed Hopf Algebras,” 2001. https://doi.org/10.48550/ARXIV.MATH/0110136.
+
+\bibitem{CKWZ}Chan, Kenneth, Ellen Kirkman, Chelsea Walton, and James Zhang. “Quantum Binary Polyhedral Groups and Their Actions on Quantum Planes.” arXiv, July 2, 2014. http://arxiv.org/abs/1303.7203.
+
+\bibitem{CKWZ2}Chan, Kenneth, Ellen Kirkman, Chelsea Walton, and James Zhang. “McKay Correspondence for Semisimple Hopf Actions on Regular Graded Algebras, II.” arXiv, October 2, 2017. http://arxiv.org/abs/1610.01220.
+
+\bibitem{CKWZ3}Chan, Kenneth, Ellen Kirkman, Chelsea Walton, and James Zhang. “McKay Correspondence for Semisimple Hopf Actions on Regular Graded Algebras, I.” arXiv, May 12, 2018. http://arxiv.org/abs/1607.06977.
+
+\bibitem{CF}Cohen, Miriam, and Davida Fishman. “Hopf Algebra Actions.” Journal of Algebra 100, no. 2 (May 1986): 363–79. https://doi.org/10.1016/0021-8693(86)90082-7.
+
+\bibitem{CM}Cohen, M, and S Montgomery. “GROUP-GRADED RINGS, SMASH PRODUCTS, AND GROUP ACTIONS,” n.d.
+
+\bibitem{EW}Etingof, Pavel, and Chelsea Walton. “Finite Dimensional Hopf Actions on Deformation Quantizations.” arXiv, July 2, 2016. http://arxiv.org/abs/1602.00532.
+
+\bibitem{FM}Fisher, Joe W, and Susan Montgomery. “Semiprime Skew Group Rings.” Journal of Algebra 52, no. 1 (May 1978): 241–47. https://doi.org/10.1016/0021-8693(78)90272-7.
+
+\bibitem{H}Halbig, Sebastian. “Generalised Taft Algebras and Pairs in Involution.” Communications in Algebra 49, no. 12 (December 2, 2021): 5181–95. https://doi.org/10.1080/00927872.2021.1939043.
+
+\bibitem{KP}Kac, G. I., and V. G. Paljutkin. “Finite Ring Groups.” Trudy Moskov. Mat. Ob\v s\v c. 15 (1966): 224–61.
+
+\bibitem{KKZ}Kirkman, E., J. Kuzmanovich, and J.J. Zhang. “Gorenstein Subrings of Invariants under Hopf Algebra Actions.” Journal of Algebra 322, no. 10 (November 2009): 3640–69. https://doi.org/10.1016/j.jalgebra.2009.08.018.
+
+\bibitem{KKJ}Kirkman, E., J. Kuzmanovich, and J.J. Zhang. “Gorenstein Subrings of Invariants under Hopf Algebra Actions.” Journal of Algebra 322, no. 10 (November 2009): 3640–69. https://doi.org/10.1016/j.jalgebra.2009.08.018.
+
+\bibitem{Maj}Majid, Shahn. Foundations of Quantum Group Theory. Cambridge University Press 1995.
+
+\bibitem{M}Masuoka, A., Semisimple Hopf algebras of dimension 6, 8, Israel J. Math. 92 (1–3) (1995) 361–373
+
+\bibitem{Mon}Montgomery, Susan. Hopf Algebras and Their Actions on Rings. Vol. 82. Providence, R.I.; 4: Published for the Conference Board of the Mathematical Sciences by the American Mathematical Society, 1993.
+
+\bibitem{Sw}Sweedler, Moss E. Hopf Algebras. New York: W. A. Benjamin, 1969.
+
+\bibitem{T}Taft, Earl J. “The Order of the Antipode of Finite-Dimensional Hopf Algebra.” Proceedings of the National Academy of Sciences 68, no. 11 (November 1971): 2631–33. https://doi.org/10.1073/pnas.68.11.2631.
+
+\bibitem{WW}Walton, Chelsea, and Sarah Witherspoon. “Poincaré–Birkhoff–Witt Deformations of Smash Product Algebras from Hopf Actions on Koszul Algebras.” Algebra \& Number Theory 8, no. 7 (October 21, 2014): 1701–31. https://doi.org/10.2140/ant.2014.8.1701.
+
+\bibitem{KR}Kulish, P, and N. Reshitkhin
+
+\end{thebibliography}
+
+
+
+\end{document}
