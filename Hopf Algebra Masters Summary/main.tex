@@ -165,11 +165,11 @@ H\otimes V \arrow[r, "\alpha"]                                                  
                                                           & V                             
 \end{tikzcd}
 \]
-In this case, $V$ is called a left Hopf-module.
+In this case, $V$ is called a left H-module.
 \end{definition}
 
 \begin{definition}
-When an algebra $A$ is a left Hopf-module with action $\alpha$, we call it a left Hopf-module algebra if it also satisfies the diagrams
+When an algebra $A$ is a left H-module with action $\alpha$, we call it a left H-module algebra if the following diagrams also commute
 \[
 % https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRAAkAdTiPAW3gACAILdeWAXBEgAvqXSZc+QigCM5KrUYs2XHvyHDZ8kBmx4CRAEwbq9Zq0QgjcheeVEAzLa0O2o-QlDYzclSxQyVU17HSc9cUlBeIMpAITg11NFCxVkbyi7bUcOMRSRUqCpZMrpGU0YKABzeCJQADMAJwg+JDIQHAgkdV9YkG4cDqw6MEaGBogAd0JMzu6h6gGkGxHi7kY0AAs6EJBVnsRvfsHEbZjdzgmpmbmoRcJqBjoAIxgGAAVsh4nJNGgccCczr0NtcACyFPxOcaTaazGAVRJYKDooSYkAfb6-AHucIgEFgiFdc5wq5IACs8NGmOxcHGdCYzMEuJWlLp0KQlzubD2DEOdGZwtFeJAnx+-0BJLJ4LqMiAA
 \begin{tikzcd}
@@ -192,11 +192,11 @@ Let $Q=(q_{ij})$ be an $n\times n$ matrix of roots of unity where $q_{ii}=1=q_{i
 \begin{definition}
 A quantum group is a Hopf algebra $H$ with a bijective antipode and an element $R\in H\otimes H$ satisfying 
 \begin{enumerate}
-    \item $R\left(\sum h\1\otimes h\2\right)=\sum h\2\otimes h\1$
+    \item $R\left(\sum h\1\otimes h\2\right)R^{-1}=\sum h\2\otimes h\1$
     \item $\triangle\otimes id(R)=R_{1,3}R_{2,3}$
     \item $id\otimes\triangle(R)=R_{1,3}R_{1,2}$
 \end{enumerate}
-where writing $R=\sum R\1\otimes R\2$, then $R_{1,2}=\sum R\1\otimes R\2\otimes 1$, $R_{1,3}=\sum R\1\otimes 1\otimes R\2$, and $R_{2,3}=\sum 1\otimes R\1\otimes R\2$.
+where, writing $R=\sum R\1\otimes R\2$, then $R_{1,2}=\sum R\1\otimes R\2\otimes 1$, $R_{1,3}=\sum R\1\otimes 1\otimes R\2$, and $R_{2,3}=\sum 1\otimes R\1\otimes R\2$.
 \end{definition}
 
 \section{Examples}
@@ -214,7 +214,7 @@ where writing $R=\sum R\1\otimes R\2$, then $R_{1,2}=\sum R\1\otimes R\2\otimes 
     S(g)=g^{-1}\;\;S(x)=-xg^{-1}.
     \]
    $\mathbb{C}_{-1}[v_1,v_2]$ is an $H_4$-module algebra via $g\mapsto \begin{bmatrix} 1&&0\\0&&1\end{bmatrix}$, $x\mapsto\begin{bmatrix} 0&&1\\0&&0\end{bmatrix}$.
-   \\$H_4$ has the $R$-matrix $R= R=1\otimes 1-2\tfrac{1-g}{2}\otimes\tfrac{1-g}{2}+x\otimes x+2x\tfrac{1-g}{2}\otimes x\tfrac{1-g}{2}-2x\otimes x\tfrac{1-g}{2}$.
+   \\$H_4$ is a quantum group with an $R$-matrix $R=1\otimes 1-2\tfrac{1-g}{2}\otimes\tfrac{1-g}{2}+x\otimes x+2x\tfrac{1-g}{2}\otimes x\tfrac{1-g}{2}-2x\otimes x\tfrac{1-g}{2}$.
 \end{example}
 
 \begin{example}
@@ -228,12 +228,12 @@ where writing $R=\sum R\1\otimes R\2$, then $R_{1,2}=\sum R\1\otimes R\2\otimes 
    \varepsilon(x)&=1, & \varepsilon(y)&=1, & \varepsilon(z)&=1\\
    S(x)&=x, & S(y)&=y, & S(z)&=z
  \end{align*}
-$H_8$ has the module-algebras $\mathbb{C}_q[v_1,v_2]$ with $q^2=-1$, $\mathbb{C}_Q[v_1,v_2,v_3,v_4]$ with $q_{12}=q_{34}^{-1}, q_{13}=q_{24}^{-1}, q_{14}^2=1$ and $q_{23}^2=-1$, and $\mathbb{C}_{-1}[v_1,v_2]$.
-$H_8$ has $6$ non-isomorphic quasitriangular structures.
+$H_8$ has as $H_8$-module algebras, $\mathbb{C}_q[v_1,v_2]$ with $q^2=-1$, $\mathbb{C}_Q[v_1,v_2,v_3,v_4]$ with $q_{12}=q_{34}^{-1}, \\q_{13}=q_{24}^{-1}, q_{14}^2=1$ and $q_{23}^2=-1$, and $\mathbb{C}_{-1}[v_1,v_2]$.
+$H_8$ is a quantum group with $6$ non-isomorphic quasitriangular structures.
 \end{example}
 
 \begin{example}
-Described by P. Kulish and N. Reshetikhin in "Quantum linear problem for the sine-Gordon equation and higher representations", 
+Described by Kulish and Reshetikhin in "Quantum linear problem for the sine-Gordon equation and higher representations", 
 \[
 \mathcal{U}_q(\mathfrak{sl_2})=\langle E,F,K,K^{-1}\;\vert\; EF-FE=(q-q^{-1})^{-1}(K-K^{-1}), KEK^{-1}=q^2E, KFK^{-1}=q^{-2}F, \]\[KK^{-1}=1=K^{-1}K\rangle
 \]
@@ -243,7 +243,7 @@ with operations
 \varepsilon(E)&=0, & \varepsilon(F)&=0, & \varepsilon(K)&=1, & \varepsilon(K^{-1})&=1,\\
 S(E)&=-K^{-1}E, & S(F)&=-FK, & S(K)&=K^{-1}, & S(K^{-1})&=K
 \end{align*}
-$\mathcal{U}_q(\mathfrak{sl_2})$ has $\mathbb{C}_q[v_1,v_2]$ as a module algebra where $q^2\neq 1$ via $E\mapsto \begin{bmatrix}0&1\\0&0\end{bmatrix}, F\mapsto \begin{bmatrix}0&0\\1&0\end{bmatrix}, \\K\mapsto \begin{bmatrix}q&0\\0&q^{-1}\end{bmatrix}, K^{-1}\mapsto\begin{bmatrix} q^{-1}&0\\0&1\end{bmatrix}$.
+$\mathbb{C}_q[v_1,v_2]$ is a $\mathcal{U}_q(\mathfrak{sl_2})$-module algebra where $q^2\neq 1$ via $E\mapsto \begin{bmatrix}0&1\\0&0\end{bmatrix}, F\mapsto \begin{bmatrix}0&0\\1&0\end{bmatrix}, \\K\mapsto \begin{bmatrix}q&0\\0&q^{-1}\end{bmatrix}, K^{-1}\mapsto\begin{bmatrix} q^{-1}&0\\0&1\end{bmatrix}$.
 \\The $R$-matrix of $\mathcal{U}_q(\mathfrak{sl_2})$ is in a completion of $\mathcal{U}_q(\mathfrak{sl_2})\otimes \mathcal{U}_q(\mathfrak{sl_2})$.
 \end{example}
 

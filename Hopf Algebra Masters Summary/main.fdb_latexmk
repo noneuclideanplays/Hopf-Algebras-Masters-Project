@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1709681485 "c:/Users/bshel/Documents/LaTeX/Hopf-Algebras-Masters-Project/Hopf Algebra Masters Summary/main.tex" "main.pdf" "main" 1709681486 0
+["pdflatex"] 1709753074 "c:/Users/bshel/Documents/LaTeX/Hopf-Algebras-Masters-Project/Hopf Algebra Masters Summary/main.tex" "main.pdf" "main" 1709753075 0
   "C:/Users/bshel/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1709677439 81088 29d6fa367ac022d1b69251d68c0742e6 ""
   "C:/Users/bshel/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/ecbx1200.pk" 1701633944 31952 ba9bead7b5736e8a44dffe399550a00c ""
   "C:/Users/bshel/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/ecbx1728.pk" 1709677444 49100 d99bb608db73113c472976c7fdd0bc83 ""
@@ -176,9 +176,9 @@
   "C:/Users/bshel/AppData/Local/Programs/MiKTeX/tex/latex/ucs/utf8x.def" 1700127473 8944 e3433baec74c4b7b278c6b6a547ff9ec ""
   "C:/Users/bshel/AppData/Local/Programs/MiKTeX/tex/latex/url/url.sty" 1388490452 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
   "C:/Users/bshel/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty" 1656236890 56148 51a9a8571c07b9921892ae11063ae853 ""
-  "c:/Users/bshel/Documents/LaTeX/Hopf-Algebras-Masters-Project/Hopf Algebra Masters Summary/main.tex" 1709681483 16134 14483096ac5c9a488c2ad220e4fafda2 ""
-  "main.aux" 1709681486 430 d0f05bee30d9e6ec77d1ba3efbfeb390 "pdflatex"
-  "main.tex" 1709681483 16134 14483096ac5c9a488c2ad220e4fafda2 ""
+  "c:/Users/bshel/Documents/LaTeX/Hopf-Algebras-Masters-Project/Hopf Algebra Masters Summary/main.tex" 1709753073 16171 c3c4f428d4506d3459348a31fbd8c78d ""
+  "main.aux" 1709753075 430 d0f05bee30d9e6ec77d1ba3efbfeb390 "pdflatex"
+  "main.tex" 1709753073 16171 c3c4f428d4506d3459348a31fbd8c78d ""
   (generated)
   "main.aux"
   "main.log"
