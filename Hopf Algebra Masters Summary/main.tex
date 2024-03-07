@@ -91,68 +91,88 @@ A Hopf Algebra, $\left(H,\bigtriangledown,\eta,\triangle,\varepsilon,S\right)$, 
 % https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBoBGAXVJADcBDAGwFcYkQBBAHS4jwFt4AAg4gAvqXSZc+QijLFqdJq3bdeA4er5ZBcEeMkgM2PASLlSimgxZtEnHjr0GJU07IsUlt1Q9FiSjBQAObwRKAAZgBOEPxIliA4EEhkynbsWFBOmvo8ONFY9GAhjMEQAO6EbiAxcQk0yUgATDSM9ABGMIwACtJmciBlkTggNir2IPmFxaXlVTm6wlmGUbHxiGlNiADM4xkO00UlZVCV1UZ1G61JKbv7flNcBcdzZ1XilGJAA
 \[
 \text{Associativity:}
+\begin{small}
 \begin{tikzcd}
 H\otimes H\otimes H \arrow[d, "id\otimes \bigtriangledown"] \arrow[r, "\bigtriangledown\otimes id"] & H\otimes H \arrow[d, "\bigtriangledown"] \\
 H\otimes H \arrow[r, "\bigtriangledown"]                                                         & H                                    
 \end{tikzcd}
+\end{small}
 \text{   \;\;\;\;Unit:}
 % https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZARgBoAGAXVJADcBDAGwFcYkQBBAHS4jwFt4AAg4gAvqXSZc+QinKli1Ok1bseAaw08+WQXBHjJIDNjwEiZAEzKGLNok5GpZ2USuLbqh5x0DhmhriyjBQAObwRKAAZgBOEPxIZCA4EEgKKvbqXDA49H56wlhQziBxCUgAzDSp6TR2ao7FBfo8ufQgNIz0AEYwjAAK0uZyILFYYQAWOKXliYjJtYgemY0gALydIN19g8NujuNTMxIx8fPVKWnL9d7sm6dl53VXSCsNPjw44-RgYYyhCAAd0IYkoYiAA
+\begin{small}
 \begin{tikzcd}
                                                            & H\otimes H \arrow[dd, "\bigtriangledown"] &                                                           \\
 \mathbb{C}\otimes H \arrow[ru, "\eta\otimes id"] \arrow[rd, "="'] &                                        & H\otimes \mathbb{C} \arrow[lu, "id\otimes\eta"'] \arrow[ld, "="] \\
                                                            & H                                      &                                                          
 \end{tikzcd}
+\end{small}
 \]
 \[
 \text{Coassociativity:} % https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRAAkQBfU9TXfIRQBGclVqMWbdgB0ZEPAFt4AAk48+2PASJlh4+s1aIOchVmVw13XiAxbBRUfuqGpJ2fKWrP5y9a5xGCgAc3giUAAzACcIRSQyEBwIJFEJIzY5HGisOjAQhlYNEBi4hOpkpAAmV0ljECycvIKi21L4xBqklMQAZlqMk0bc-MKQajgACyxInATi9tSKnv709waZbJGWs28rLChuCi4gA
+\begin{small}
 \begin{tikzcd}
 H \arrow[r, "\triangle"] \arrow[d, "\triangle"] & H\otimes H \arrow[d, "\triangle\otimes id"] \\
 H\otimes H \arrow[r, "id\otimes\triangle"]               & H\otimes H\otimes H                        
 \end{tikzcd}
+\end{small}
 \text{\;\;\;\; Counit:}
 % https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBoBGAXVJADcBDAGwFcYkQAdDga264jwBbeAAIAEiAC+pdJlz5CKcqWLU6TVuwnTZ2PASIAmCmoYs2iEGP5D4XXlJkgMehUWWHTGi1ZtZhcOJSajBQAObwRKAAZgBOEIJIAMw0OBBIZOrm7FwMsTBo2IwEfgEiWFCOMfGJiMogaRk0ZpqWALwgNIz0AEYwjAAKcvqKILFYYQAWOFUgcQlI9Y2IxlmtIB06czXJqekrzd7sFaV2HHkFRQZdvf1DrgaW41MzW-O1S-spaz5cOOP0MBhRhsSSUSRAA
+\begin{small}
 \begin{tikzcd}
              & H \arrow[ld, "="'] \arrow[rd, "="] \arrow[dd, "\triangle"]                         &             \\
 \mathbb{C}\otimes H &                                                                                    & H\otimes\mathbb{C} \\
              & H\otimes H \arrow[lu, "\varepsilon\otimes id"] \arrow[ru, "id\otimes\varepsilon"'] &            
 \end{tikzcd}
+\end{small}
 \]
+\vspace{4ex}
 \[
 \text{Coproduct compatibility:}
 % https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRAAkAdTiPAW3gACdiAC+pdJlz5CKAIzkqtRizYjxk7HgJEATIur1mrRB268sAuMLESQGLTKJk5So6tNce-IV4tXhcx9rdTsHaR0UfVdDFRMzb0tfIKSQlID1JRgoAHN4IlAAMwAnCD4kMhAcCCQAZljjNm4cYqw6MByGGHT4Ztb2ztYNEBKyuupqpAAWBo8QLCgeuGa6JiXBBdsi0vLESsnEBWVG0z62jq6oCAB3QmHR3aOD-WO5s4GurZGd6YmaxBe7ni7wu2RuYCWIMGV1uYgooiAA
+\begin{small}
 \begin{tikzcd}
 H\otimes H \arrow[d, "\triangle\otimes\triangle"] \arrow[r, "\bigtriangledown"] & H \arrow[r, "\triangle"] & H\otimes H                                                                  \\
 H\otimes H\otimes H\otimes H \arrow[rr, "id\otimes\tau\otimes id"]           &                          & H\otimes H\otimes H\otimes H \arrow[u, "\bigtriangledown\otimes\bigtriangledown"]
 \end{tikzcd}
+\end{small}
 \]
+\vspace{4ex}
 \[
 % https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRAB12BrLkAX1LpMufIRQBGclVqMWbABL9BIDNjwEik8dPrNWiEPM4Q8AW3gACRX2kwoAc3hFQAMwBOEU0jIgcEJABM1LpyBpwwOHTGZvDhkUquHl6Ikr7+iEEyemycOG5YdGD2DKwCiZ7e1H5IqSH6HOwRdPwUfEA
-\text{Unit compatibility:}\begin{tikzcd}
+\text{Unit compatibility:}
+\begin{small}
+\begin{tikzcd}
 \mathbb{C} \arrow[rd, "\eta\otimes\eta"] \arrow[r, "\eta"] & H \arrow[d, "\triangle"] \\
                                                     & H\otimes H              
 \end{tikzcd}
+\end{small}
 \text{\;\;\;Counit compatibility:}
 % https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRAAkQBfU9TXfIRQBGclVqMWbADrSA1nO68QGbHgJEyw8fWatEHWRDwBbeAAJOXcTCgBzeEVAAzAE4QTSAEzUcEJGQSejLSOK5YdGB2DLYQAO6EPC7unog+IH5IokFSBrL0rjBo2AwERqbw+XSFxVilhNQMdABGMAwACvzqQiDhdgAWOErJHgG+-ojZurkgVTUlGtZcQA
+\begin{small}
 \begin{tikzcd}
 H \arrow[r, "\varepsilon"]                                                         & \mathbb{C} \\
 H\otimes H \arrow[u, "\bigtriangledown"] \arrow[ru, "\varepsilon\otimes\varepsilon"'] &    
 \end{tikzcd}
+\end{small}
 \]
+\vspace{4ex}
 \[
 \text{Antipode:}
 % https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBoBGAXVJADcBDAGwFcYkQAJEAX1PU1z5CKchWp0mrdgB1pAazk8+IDNjwEiAJjE0GLNok5L+aoUTKbxeqYY6yIeALbwABF14nBGlNsu7JBpz2Tq7uyqpewiSkxFYB7HbSDljOcG7GKgLqUdqx-voJwSmhPOIwUADm8ESgAGYAThCOSGQgOBBIAKz5NiCyOPVY9GAVjGweIA1NXTTtSABsPYFYUEWpLgDKGVPNiIttHYjaEgWG-YPDo+UQAO6EEzsts4cAzEsy0gNDI2MgNIz0ABGMEYAAUsmZDIMKgALHDbRq7N4HJAAFnehg2a1cKwR00Q6JRRwxfU+Fx+1zueN2rTmiFEJ16sgY9RgaGwjA0D0RSAZdOO1kCshgOHopW4QA
+\begin{small}
 \begin{tikzcd}
 H\otimes H \arrow[rr, "id\otimes S"]                                      &                       & H\otimes H \arrow[d, "\bigtriangledown"] \\
 H \arrow[u, "\triangle"] \arrow[d, "\triangle"'] \arrow[r, "\varepsilon"] & \mathbb{C} \arrow[r, "\eta"] & H                                     \\
 H\otimes H \arrow[rr, "S\otimes id"]                                      &                       & H\otimes H \arrow[u, "\bigtriangledown"]
 \end{tikzcd}
+\end{small}
 \]\\
 \end{definition}
 
-For the sake of brevity, we write in general that $\triangle(h)=\sum h\1\otimes h\2$, this is called Sweedler notation.\\
+For the sake of brevity, we write in general $\triangle(h)=\sum h\1\otimes h\2$, following standard Sweedler notation for Hopf algebras.\\
 
 \begin{definition} A left action of a Hopf algebra on a vector space $V$ is a tuple $(\alpha, V)$ so that
-$\alpha:H\otimes V\to V$ is a map satisfying the diagrams
+$\alpha:H\otimes V\to V$ is a map so that the following diagrams commute,
 \[
 % https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRAAkAdTiPAW3gACLj35CAaiAC+pdJlz5CKMgEYqtRizYjeWAXEGSZc7HgJEV5dfWatEHbrv2HpskBlOKLpNdRtb7I3UYKABzeCJQADMAJwg+JDIQHAgkACY-TTsQbhwYrDowUIYQiAB3MEcxAywoV2i4hMQklKRLDVs2Wqq9IW5GNAALOnqQWPi26lbEAGZMzvt+hiGR4zHG9KnU2fmAnM4B4ekKKSA
 \begin{tikzcd}
@@ -167,6 +187,8 @@ H\otimes V \arrow[r, "\alpha"]                                                  
 \]
 In this case, $V$ is called a left H-module.
 \end{definition}
+
+We also require the following analogue of acting by automorphisms.
 
 \begin{definition}
 When an algebra $A$ is a left H-module with action $\alpha$, we call it a left H-module algebra if the following diagrams also commute
@@ -183,6 +205,8 @@ H\otimes A \arrow[rru, "\alpha"]             &                       &
 \end{tikzcd}
 \]
 \end{definition}
+
+We are particularly interested in actions on non-commutative algebras, like quantum polynomial rings:
 
 \begin{definition}
 Let $Q=(q_{ij})$ be an $n\times n$ matrix of roots of unity where $q_{ii}=1=q_{ij}q_{ji}$.
@@ -243,7 +267,10 @@ with operations
 \varepsilon(E)&=0, & \varepsilon(F)&=0, & \varepsilon(K)&=1, & \varepsilon(K^{-1})&=1,\\
 S(E)&=-K^{-1}E, & S(F)&=-FK, & S(K)&=K^{-1}, & S(K^{-1})&=K
 \end{align*}
-$\mathbb{C}_q[v_1,v_2]$ is a $\mathcal{U}_q(\mathfrak{sl_2})$-module algebra where $q^2\neq 1$ via $E\mapsto \begin{bmatrix}0&1\\0&0\end{bmatrix}, F\mapsto \begin{bmatrix}0&0\\1&0\end{bmatrix}, \\K\mapsto \begin{bmatrix}q&0\\0&q^{-1}\end{bmatrix}, K^{-1}\mapsto\begin{bmatrix} q^{-1}&0\\0&1\end{bmatrix}$.
+$\mathbb{C}_q[v_1,v_2]$ is a $\mathcal{U}_q(\mathfrak{sl_2})$-module algebra where $q^2\neq 1$ via 
+\[
+    E\mapsto \begin{bmatrix}0&1\\0&0\end{bmatrix},\;\; F\mapsto \begin{bmatrix}0&0\\1&0\end{bmatrix},\;\; K\mapsto \begin{bmatrix}q&0\\0&q^{-1}\end{bmatrix},\;\; K^{-1}\mapsto\begin{bmatrix} q^{-1}&0\\0&1\end{bmatrix}.
+\]
 \\The $R$-matrix of $\mathcal{U}_q(\mathfrak{sl_2})$ is in a completion of $\mathcal{U}_q(\mathfrak{sl_2})\otimes \mathcal{U}_q(\mathfrak{sl_2})$.
 \end{example}
 
@@ -260,8 +287,11 @@ Given a Hopf algebra $H$ and a left Hopf-module algebra $A$, the smash product a
     Let $H$ be a Hopf algebra, $G(H)=\{h\in H\;\vert\; \triangle(h)=h\otimes h\}$ is called the collection of group-like elements and $P(H)=\{h\in H\;\vert\; \triangle(h)=h\otimes 1+1\otimes h\}$ is called the collection of primitive elements.
 \end{definition}
 
+Note that one can show $G(H)$ is a group under the product of $H$ and $P(H)$ is a Lie algebra under the commutator bracket.
+
 \begin{theorem}[Cartier-Kostant-Milnor-Moore]
-Let $H$ be a cocommutative Hopf algebra over $\mathbb{C}$, then as Hopf algebras
+Let $H$ be a cocommutative Hopf algebra over $\mathbb{C}$.
+Then as Hopf algebras,
 \[
 H\cong \mathcal{U}(P(H))\# \mathbb{C}G(H).    
 \]
