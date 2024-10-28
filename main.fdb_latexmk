@@ -1,7 +1,7 @@
 # Fdb version 3
-["pdflatex"] 1698946987 "/home/bam0430/Documents/LaTeX/Hopf Algebras Masters Project/main.tex" "main.pdf" "main" 1698946988
+["pdflatex"] 1729102585 "/home/bam0430/Documents/LaTeX/Hopf Algebras Masters Project/main.tex" "main.pdf" "main" 1729102587
   "/etc/texmf/web2c/texmf.cnf" 1692894484 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/bam0430/Documents/LaTeX/Hopf Algebras Masters Project/main.tex" 1698946986 29868 9bd0d4c30cb509a1bac68fbe8a3239c7 ""
+  "/home/bam0430/Documents/LaTeX/Hopf Algebras Masters Project/main.tex" 1729102583 29922 9b14f21f7c7a9e8a2d3461be4b2ffd5d ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ecbx1200.tfm" 1136768653 3584 402da0b29eafbad07963b1224b222f18 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ecbx1728.tfm" 1136768653 3584 ad49a18d8515beef6d92d4d3f197d0fd ""
@@ -182,9 +182,9 @@
   "/usr/share/texmf/fonts/type1/public/cm-super/sfti1200.pfb" 1698867441 198221 ca5aa71411090ef358a6cc78b7458365 ""
   "/usr/share/texmf/web2c/texmf.cnf" 1644012257 39432 7155514e09a3d69036fac785183a21c2 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1698867455 4379155 98693266ff65f58d9f98aff394de12d2 ""
-  "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1698867495 2801854 2bf5428b3efc71761612c059941151d2 ""
-  "main.aux" 1698946988 1112 01b9089bfd3527b49295c2e5b78a9daf "pdflatex"
-  "main.tex" 1698946986 29868 9bd0d4c30cb509a1bac68fbe8a3239c7 ""
+  "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1710433036 2800622 233d301b600167d9f334be385b5a94f1 ""
+  "main.aux" 1729102587 1227 916d5c8bf7ccc7469b80fb365b74ff18 "pdflatex"
+  "main.tex" 1729102583 29922 9b14f21f7c7a9e8a2d3461be4b2ffd5d ""
   (generated)
   "main.aux"
   "main.log"
